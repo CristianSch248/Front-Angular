@@ -37,31 +37,6 @@
             <button (click)="cadastrar()"   class="btn btn-lg btn-primary btn-block" >CADASTRAR</button>
           </form>
         </div>
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Nome</th>
-              <th scope="col">CPF</th>
-              <th scope="col">Telefone</th>
-              <th scope="col">ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let p of pacientes">
-              <th>{{p.id}}</th>
-              <th>{{p.nome}}</th>
-              <th>{{p.cpf}}</th>
-              <th>{{p.telefone}}</th>
-              <th>
-                <button (click)="editar(p)">editar</button>
-              </th>
-              <th>
-                <button (click)="deletar(p)">excluir</button>
-              </th>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>

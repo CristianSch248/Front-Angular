@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {PrincipalComponent} from "./principal/principal.component";
 import {AuthGuardService} from "./security/auth-guard.service";
+import { ListagemPacienteComponent } from './principal/listagem-paciente/listagem-paciente.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch:'full'},
@@ -21,6 +22,9 @@ const routes: Routes = [
       { path: 'medico', component: MedicoComponent, canActivate: [AuthGuardService] },
       { path: 'usuario', component: UsuarioComponent, canActivate: [AuthGuardService] }
     ]
+  },
+  {
+    path: 'paciente', component: ListagemPacienteComponent, /* canActivate: [AuthGuardService] */
   },
   { path: '**', component: LoginComponent}
 ];

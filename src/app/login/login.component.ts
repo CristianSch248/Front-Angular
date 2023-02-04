@@ -12,9 +12,10 @@ export class LoginComponent implements OnInit{
 
   constructor(private router: Router, private service: LoginService) { }
 
-  usuario: Usuario = new Usuario();
+  usuario: Usuario = new Usuario("kevin@gmail.com","1234","","admin");
 
   ngOnInit(): void {
+    console.log(this.usuario);
   }
 
   logar(): void{

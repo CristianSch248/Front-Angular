@@ -17,12 +17,15 @@ import { PrincipalModule } from "./principal/principal.module";
 import {ErrorHandlerService} from "./security/error-handler.service";
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ListagemPacienteComponent } from './principal/listagem-paciente/listagem-paciente.component';
+import { ListagemPacienteModule } from './principal/listagem-paciente/listagem-paciente.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioComponent,
     HospitalComponent,
+
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     PacienteModule,
     LoginModule,
     PrincipalModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    ListagemPacienteModule
   ],
   providers: [
     {provide: ErrorHandler, useClass: ErrorHandlerService},

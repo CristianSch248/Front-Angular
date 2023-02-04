@@ -17,17 +17,19 @@ export class PacienteComponent implements OnInit{
   paciente: Paciente = new Paciente();
   pacientes: Paciente[] = [];
 
-  listar(){
-    this.service.listar().subscribe((dados: Paciente[])=> {
-      this.pacientes = dados;
-      console.log('pacientessss', this.pacientes)
-    })
-  }
+
 
   cadastrar(){
     this.service.criar(this.paciente).subscribe(()=>{
       this.paciente = new Paciente();
       this.listar()
+    })
+  }
+
+  listar(){
+    this.service.listar().subscribe((dados: Paciente[])=> {
+      this.pacientes = dados;
+      console.log('pacientessss', this.pacientes)
     })
   }
 
@@ -41,18 +43,7 @@ export class PacienteComponent implements OnInit{
    *
    */
 
-  editar(paciente: Paciente){
-    this.service.editar(paciente).subscribe(()=>{
-      this.paciente = new Paciente();
-      this.listar();
-    })
-  }
 
-  deletar(paciente: Paciente){
-    this.service.deletar(paciente).subscribe(()=>{
-      this.listar();
-    })
-  }
 
   /**
    * isAdmin(){
