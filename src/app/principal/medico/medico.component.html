@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-100 col-md-100 col-lg-10 mx-auto">
+      <div class="card border-0 shadow rounded-9 my-9">
+        <div class="card-body p-10 p-sm-9">
+          <h4 class="card-title text-center mb-5 fw-light fs-5">
+            Cadastrar Medico
+          </h4>
+          <form>
+            <div class="form-group">
+              <label for="nome">Nome: </label>
+              <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome do Médico">
+            </div>
+            <div class="form-group">
+              <label for="especialidade">Especialidade: </label>
+              <input name="especialidade" type="text" class="form-control" id="especialidade" placeholder="Especialidade do Médico">
+            </div>
+            <button class="btn btn-lg btn-primary btn-block">CADASTRAR</button>
+          </form>
+        </div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Telefone</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let m of medicos">
+              <th>{{m.id}}</th>
+              <th>{{m.nome}}</th>
+              <th>{{m.especialidade}}</th>
+              <th>
+                <button>Editar</button>
+              </th>
+              <th>
+                <button>Excluir</button>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

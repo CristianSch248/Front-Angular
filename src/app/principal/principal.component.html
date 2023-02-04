@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top">
+
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/principal">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/principal/paciente" href="#">Paciente</a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="/principal/medico" href="#">Medico</a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="/principal/consulta" href="#">Consulta</a>
+        </li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+
+          <a class="nav-link" (click)="logout()" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
