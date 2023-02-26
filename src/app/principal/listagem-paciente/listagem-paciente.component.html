@@ -1,32 +1,31 @@
 <div class="container">
-  <h3 class="">Listagem de pacientes</h3>
-  <table class="table">
-    <thead class="thead-dark ">
+  <h3 class="">Listagem de Pacientes</h3>
+  <table class="table table-success table-striped">
+    <thead class="thead-dark">
       <tr class="row m-0">
-        <th scope="col" class="col-md-2" >ID</th>
+        <th scope="col" class="col-md-2" >#</th>
         <th scope="col" class="col-md-2" >Nome</th>
         <th scope="col" class="col-md-2" >CPF</th>
         <th scope="col" class="col-md-2" >Telefone</th>
-        <th scope="col" class="col-md-2" >ações</th>
-
+        <th scope="col" class="col-md-2" >Ações</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of pacientes" class="row m-0">
-        <td class="col-md-2">{{p.id}}</td>
+      <tr *ngFor="let p of pacientes; let i = index" class="row m-0">
+        <td class="col-md-2">{{i}}</td>
         <td class="col-md-2">{{p.nome}}</td>
         <td class="col-md-2">{{p.cpf}}</td>
         <td class="col-md-2">{{p.telefone}}</td>
-
         <td class="col-md-2">
-          <div class="row d-flex gap-2">
-            <button class="col-md-5" (click)="editar(p)">editar</button>
-            <button class="col-md-5" (click)="deletar(p)">excluir</button>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-success"
+                    routerLink="/principal/paciente/{{p.id}}"
+                    routerLinkActive="router-link-active">editar</button>
+            <button type="button" class="btn btn-danger"
+                    (click)="deletar(p)">excluir</button>
           </div>
-
         </td>
       </tr>
     </tbody>
   </table>
-
 </div>

@@ -9,55 +9,18 @@ import { PacienteService } from '../paciente/paciente.service';
 })
 export class ListagemPacienteComponent implements OnInit   {
 
-  pacientes = [
-    {
-      id: 1,
-      idade: 20,
-      nome: 'kevin',
-      sexo: 'homen',
-      telefone: '55996019816',
-      cpf: '0272423141231'
-    },
-    {
-      id: 1,
-      idade: 20,
-      nome: 'kevin',
-      sexo: 'homen',
-      telefone: '55996019816',
-      cpf: '0272423141231'
-    },
-    {
-      id: 1,
-      idade: 20,
-      nome: 'kevin',
-      sexo: 'homen',
-      telefone: '55996019816',
-      cpf: '0272423141231'
-    },
-    {
-      id: 1,
-      idade: 20,
-      nome: 'kevin',
-      sexo: 'homen',
-      telefone: '55996019816',
-      cpf: '0272423141231'
-    },
-  ];
   paciente: Paciente = new Paciente();
+  pacientes: Paciente[] = [];
 
-  constructor(private service: PacienteService) {
-
-
-  }
+  constructor(private service: PacienteService) { }
 
   ngOnInit(): void {
-    console.log(this.pacientes)
+    this.listar();
   }
 
   listar(){
     this.service.listar().subscribe((dados: Paciente[])=> {
-      // this.pacientes = dados;
-      // console.log('pacientessss', this.pacientes)
+      this.pacientes = dados;
     })
   }
 

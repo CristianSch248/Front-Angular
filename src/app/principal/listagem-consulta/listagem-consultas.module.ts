@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListagemPacienteComponent } from './listagem-paciente.component';
+import { ListagemConsultaComponent } from './listagem-consulta.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    ListagemPacienteComponent
+    ListagemConsultaComponent
   ],
   imports: [
     CommonModule,
@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   exports: [
-    ListagemPacienteComponent
-  ],
+    ListagemConsultaComponent
+  ]
 })
-export class ListagemPacienteModule { }
+export class ListagemConsultasModule { }

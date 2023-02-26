@@ -1,0 +1,34 @@
+<div class="container">
+  <h3 class="py-3 text-center">Consultas Marcadas</h3>
+  <table class="table table-success table-striped">
+    <thead class="thead-dark">
+      <tr class="row m-0">
+        <th scope="col" class="col-md-1 text-start">#</th>
+        <th scope="col" class="col-md-2 text-center">Paciente</th>
+        <th scope="col" class="col-md-2 text-center">Caso</th>
+        <th scope="col" class="col-md-1 text-center">data</th>
+        <th scope="col" class="col-md-1 text-center">hora</th>
+        <th scope="col" class="col-md-2 text-center">Medico</th>
+        <th scope="col" class="col-md-1 text-center">ativo</th>
+        <th scope="col" class="col-md-2 text-center" >Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of consultas; let i = index" class="row m-0">
+        <td class="col-md-1">{{i}}</td>
+        <td class="col-md-2 text-center">{{c.paciente.nome}}</td>
+        <td class="col-md-2 text-center">{{c.caso}}</td>
+        <td class="col-md-1 text-center">{{c.data}}</td>
+        <td class="col-md-1 text-center">{{c.hora}}</td>
+        <td class="col-md-2 text-center">{{c.medico.nome}}</td>
+        <td class="col-md-1 text-center">{{c.status}}</td>
+        <td class="col-md-2 text-center">
+          <div lass="btn-group" role="group" aria-label="Basic example">
+            <!-- <button class="col-md-5" routerLink="/principal/consulta/{{c.id}}" routerLinkActive="router-link-active" >editar</button> -->
+            <button type="button" class="btn btn-danger sm-1" (click)="deletar(c)">FInalizar consulta</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

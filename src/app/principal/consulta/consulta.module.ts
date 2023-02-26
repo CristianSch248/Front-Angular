@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ConsultaComponent } from './consulta.component';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ]
 })
 export class ConsultaModule { }

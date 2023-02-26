@@ -19,14 +19,14 @@ export class ErrorHandlerService extends ErrorHandler{
     if(error instanceof HttpErrorResponse){
       switch(error.status){
         case 400:
-          alert('Usuário ou Senha incorretos')
+          alert('400 Bad Request: Usuário ou Senha incorretos')
           break;
         case 403:
-          alert('Problemas para executar uma ação')
+          alert('403: Forbidden')
           break;
         case 500:
-            alert('Erro np servidor back-end')
-            break;
+          alert('500: Internal Server Error')
+          break;
       }
     }
   }

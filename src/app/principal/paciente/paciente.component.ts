@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Paciente } from './paciente';
 import { PacienteService } from './paciente.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-paciente',
@@ -8,72 +9,61 @@ import { PacienteService } from './paciente.service';
   styleUrls: ['./paciente.component.css']
 })
 export class PacienteComponent implements OnInit{
-  constructor(private service: PacienteService) {}
-
-  ngOnInit(): void {
-    this.listar();
-  }
+  id : any;
+  modo = 'CREATE';
 
   paciente: Paciente = new Paciente();
   pacientes: Paciente[] = [];
 
+  constructor(
+    private service: PacienteService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
+  ngOnInit(): void {
+    this.listar();
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id');
+    });
+
+    if(this.id != ''){
+      this.service.getPaciente(this.id).subscribe({
+        next: (data) =>{
+          this.modo  = 'UPD'
+          this.paciente = data
+        },
+        error: (err)=>{
+          console.log(err);
+        }
+      })
+    } else {
+      this.modo = 'CREATE'
+    }
+  }
 
   cadastrar(){
     this.service.criar(this.paciente).subscribe(()=>{
       this.paciente = new Paciente();
-      this.listar()
     })
+    this.onSubmit();
+  }
+
+  edit(){
+    this.service.editar(this.paciente).subscribe(() =>{
+      this.paciente = new Paciente();
+    })
+    this.onSubmit();
   }
 
   listar(){
     this.service.listar().subscribe((dados: Paciente[])=> {
       this.pacientes = dados;
-      console.log('pacientessss', this.pacientes)
     })
   }
 
-  /**
-   *editar(id?: number){
-      this.opcao = 'edi';
-      this.service.pesquisa(id).subcribe((dado: Paciente)=>{
-        this.paciente = dado;
-      })
-    }
-   *
-   */
-
-
-
-  /**
-   * isAdmin(){
-   *  const jwt = localStorage.getItem('jwt');
-   *  if(jwt){
-   *    var token = this.helper.decodeToken(jwt);
-   *    if(token.permissao == 'ADMIN'){
-   *      return true;
-   *    }
-   *  }
-   *  return false;
-   * }
-   */
-
-
-  // private atualizar(): void {
-  //   this.service.listar().subscribe((dados) => {
-  //     this.paciente = dados;
-  //   });
-  // }
-
-  // cadastrar(){
-  //   console.log('botão clicado' + this.paciente)
-  //   if (this.cadastrado) {
-  //     this.cadastrado = false;
-  //   } else {
-  //     this.cadastrado = true;
-  //   }
-  //   this.service.criar(this.paciente).subscribe( () => {
-  //     this.atualizar();
-  //   })
-  // }
+  onSubmit() {
+    this.listar();
+    this.router.navigate(['/principal/listar/paciente'])
+  }
 }

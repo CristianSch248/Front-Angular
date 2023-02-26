@@ -1,0 +1,29 @@
+<div class="container">
+  <h3>Listagem de Medicos</h3>
+  <table class="table table-success table-striped">
+    <thead class="thead-dark">
+      <tr class="row m-0">
+        <th scope="col" class="col-md-2">#</th>
+        <th scope="col" class="col-md-2">Nome</th>
+        <th scope="col" class="col-md-2">Especialidade</th>
+        <th scope="col" class="col-md-2">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of medicos; let i = index" class="row m-0">
+        <td class="col-md-2">{{i}}</td>
+        <td class="col-md-2">{{m.nome}}</td>
+        <td class="col-md-2">{{m.especialidade}}</td>
+        <td class="col-md-2">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button ype="button" class="btn btn-success"
+                    routerLink="/principal/medico/{{m.id}}"
+                    routerLinkActive="router-link-active" >editar</button>
+            <button type="button" class="btn btn-danger"
+                    (click)="deletar(m)">Excluir</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

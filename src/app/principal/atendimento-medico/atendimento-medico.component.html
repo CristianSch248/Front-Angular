@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-100 col-md-100 col-lg-10 mx-auto">
+      <div class="card border-0 shadow rounded-9 my-9">
+        <div class="card-body p-10 p-sm-9">
+          <h2 class="card-title text-center mb-5 fw-light fs-5">
+            Historico atendimentos do medico
+          </h2>
+          <form>
+            <div class="form-group">
+              <label for="medico">Medico: </label>
+              <select (change)="setIdMedico($event)" class="form-select" aria-label="Default select example">
+                <option selected>Selecione uma opção</option>
+                <option *ngFor="let m of medicos;" [value]="m.id" name="medico" id="medico">{{m.nome}} - {{m.especialidade}}</option>
+              </select>
+            </div>
+          </form>
+          <div class="container" *ngIf="consultas.length != 0">
+            <h3 class="py-3">Historico de consultas</h3>
+            <table class="table w-100">
+              <thead class="thead-dark">
+                <tr class="row m-0">
+                  <th scope="col" class="col-md-1 text-start">#</th>
+                  <th scope="col" class="col-md-2 text-center">Data</th>
+                  <th scope="col" class="col-md-2 text-center">Hora</th>
+                  <th scope="col" class="col-md-2 text-center">Caso</th>
+                  <th scope="col" class="col-md-2 text-center">Paciente</th>
+                  <th scope="col" class="col-md-2 text-center">Ativo: </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of consultas; let i = index"  class="row m-0">
+                  <td class="col-md-1 text-start">{{i}}</td>
+                  <td class="col-md-2 text-center">{{c.data}}</td>
+                  <td class="col-md-2 text-center">{{c.hora}}</td>
+                  <td class="col-md-2 text-center">{{c.caso}}</td>
+                  <td class="col-md-2 text-center">{{c.paciente.nome}}</td>
+                  <td class="col-md-2 text-center">
+                    <div>
+                      <td *ngIf="c.status == true" class="col-md-1 text-center">
+                        <i class="bi bi-check-circle"></i>
+                      </td>
+                      <td *ngIf="c.status == false" class="col-md-1">
+                        <i class="bi bi-x-circle"></i>
+                      </td>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
