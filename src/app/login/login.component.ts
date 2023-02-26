@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit{
   }
 
   logar(): void{
-
     this.service.login(this.usuario).subscribe( u =>{
       console.log('usuario ---> '+u.token)
       this.service.setarUsuarioLogado(u);
